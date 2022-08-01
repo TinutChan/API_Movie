@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_application_1/models/movies_models.dart';
 import 'package:flutter_application_1/pages/search_page.dart';
 import 'package:flutter_application_1/respositry/repositry_items.dart';
-import 'package:flutter_application_1/widgets/custom_detailpage.dart';
+import 'package:flutter_application_1/widgets/detail_page.dart';
 import 'package:flutter_application_1/widgets/custom_dropdown.dart';
 import 'package:flutter_application_1/widgets/custom_editpage.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
@@ -26,7 +26,7 @@ class _HomePageState extends State<HomePage> {
 
   final List<String> items_Option = [
     'Preview',
-    'Edit',
+    'Favourite',
     'Delete',
   ];
 
@@ -41,6 +41,12 @@ class _HomePageState extends State<HomePage> {
         centerTitle: true,
         elevation: 0,
         actions: [
+          InkWell(
+            child: const Icon(
+              (Icons.favorite_border),
+            ),
+            onTap: () {},
+          ),
           Padding(
             padding: const EdgeInsets.all(10.0),
             child: GestureDetector(
@@ -131,9 +137,11 @@ class _HomePageState extends State<HomePage> {
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(8),
                   image: DecorationImage(
-                      image: NetworkImage(
-                          'https://image.tmdb.org/t/p/w500/${item.posterPath}'),
-                      fit: BoxFit.cover),
+                    image: NetworkImage(
+                      'https://image.tmdb.org/t/p/w500/${item.posterPath}',
+                    ),
+                    fit: BoxFit.cover,
+                  ),
                 ),
               ),
               const SizedBox(
@@ -158,6 +166,16 @@ class _HomePageState extends State<HomePage> {
                     Text(
                       '${item.overview}',
                       maxLines: 5,
+                    ),
+                    const SizedBox(
+                      height: 10,
+                    ),
+                    Padding(
+                      padding: const EdgeInsets.only(right: 10.0),
+                      child: Text(
+                        textAlign: TextAlign.center,
+                        "${item.releaseDate.year.toString().padLeft(4, '0')}-${item.releaseDate.month.toString().padLeft(2, '0')}-${item.releaseDate.day.toString().padLeft(2, '0')}",
+                      ),
                     ),
                   ],
                 ),
@@ -184,13 +202,23 @@ class _HomePageState extends State<HomePage> {
               onSelected: (value) {
                 if (value == 'Preview') {
                   print('=======Previewed========');
-                  Navigator.push(context,
-                      MaterialPageRoute(builder: (_) => const DetailPage()));
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (_) => DetailPage(
+                        item: item,
+                      ),
+                    ),
+                  );
                 }
                 if (value == 'Edit') {
                   print('==========Edited=========');
-                  Navigator.push(context,
-                      MaterialPageRoute(builder: (_) => const EditPage()));
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (_) => const EditPage(),
+                    ),
+                  );
                 }
                 if (value == 'Delete') {
                   print('===========Deleted=========');

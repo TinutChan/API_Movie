@@ -16,7 +16,9 @@ class _SearchPageState extends State<SearchPage> {
         title: Container(
           decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(10.0),
-            border: Border.all(color: Colors.grey),
+            border: Border.all(
+              color: Colors.grey,
+            ),
           ),
           child: const TextField(
             style: TextStyle(color: Colors.white),
@@ -24,7 +26,9 @@ class _SearchPageState extends State<SearchPage> {
               contentPadding: EdgeInsets.all(10),
               border: InputBorder.none,
               hintText: "Search moives...",
-              hintStyle: TextStyle(color: Colors.grey),
+              hintStyle: TextStyle(
+                color: Colors.grey,
+              ),
             ),
           ),
         ),
