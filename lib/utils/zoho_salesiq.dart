@@ -1,3 +1,5 @@
+// ignore_for_file: use_key_in_widget_constructors, library_private_types_in_public_api, camel_case_types, prefer_const_literals_to_create_immutables
+
 import 'package:flutter/material.dart';
 import 'package:salesiq_mobilisten/salesiq_mobilisten.dart';
 import 'dart:io' as io;
@@ -29,7 +31,7 @@ class _zohoSalesIQchatState extends State<zohoSalesIQchat> {
         ZohoSalesIQ.showLauncher(true);
       }).catchError((error) {
         // initialization failed
-        print(error);
+        debugPrint(error);
       });
       // ZohoSalesIQ.setThemeColorForiOS("#6d85fc");
     }
@@ -44,15 +46,13 @@ class _zohoSalesIQchatState extends State<zohoSalesIQchat> {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      home: Scaffold(
-        appBar: AppBar(
-          title: const Text('Example Application'),
-        ),
-        body: Center(
-          child: Column(
-            children: <Widget>[],
-          ),
+    return Scaffold(
+      appBar: AppBar(
+        backgroundColor: Colors.black,
+      ),
+      body: Center(
+        child: Column(
+          children: <Widget>[],
         ),
       ),
     );
