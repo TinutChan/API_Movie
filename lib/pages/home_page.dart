@@ -1,10 +1,9 @@
-import 'package:dropdown_button2/dropdown_button2.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_application_1/models/movies_models.dart';
 import 'package:flutter_application_1/pages/search_page.dart';
 import 'package:flutter_application_1/respositry/repositry_items.dart';
+import 'package:flutter_application_1/utils/zoho_salesiq.dart';
 import 'package:flutter_application_1/widgets/detail_page.dart';
-import 'package:flutter_application_1/widgets/custom_dropdown.dart';
 import 'package:flutter_application_1/widgets/custom_editpage.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 
@@ -89,6 +88,17 @@ class _HomePageState extends State<HomePage> {
               );
             }
           }
+        },
+      ),
+      floatingActionButton: FloatingActionButton(
+        child: const Icon(Icons.message_sharp),
+        onPressed: () {
+          Navigator.push(
+            context,
+            MaterialPageRoute(
+              builder: (_) => zohoSalesIQchat(),
+            ),
+          );
         },
       ),
     );
