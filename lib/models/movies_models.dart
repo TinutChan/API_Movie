@@ -1,3 +1,5 @@
+// ignore_for_file: constant_identifier_names, prefer_conditional_assignment, unnecessary_null_comparison
+
 import 'dart:convert';
 
 MoviesApi moviesApiFromMap(String str) => MoviesApi.fromMap(json.decode(str));

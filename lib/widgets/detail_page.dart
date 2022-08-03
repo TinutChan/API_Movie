@@ -47,10 +47,11 @@ class _DetailPageState extends State<DetailPage> {
             children: [
               Text(
                 _item.title,
-                style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+                style:
+                    const TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
               ),
-              Spacer(),
-              Icon(Icons.star),
+              const Spacer(),
+              const Icon(Icons.star),
               Text('${_item.voteAverage}'),
             ],
           ),
@@ -70,11 +71,11 @@ class _DetailPageState extends State<DetailPage> {
             ],
           ),
           Padding(
-            padding: EdgeInsets.all(8.0),
+            padding: const EdgeInsets.all(8.0),
             child: Text(
               '${_item.overview}',
               overflow: TextOverflow.fade,
-              style: TextStyle(fontSize: 15),
+              style: const TextStyle(fontSize: 15),
             ),
           ),
         ],

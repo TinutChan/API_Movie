@@ -1,3 +1,5 @@
+// ignore_for_file: non_constant_identifier_names
+
 import 'package:flutter/material.dart';
 import 'package:flutter_application_1/models/movies_models.dart';
 import 'package:flutter_application_1/pages/search_page.dart';
@@ -36,7 +38,7 @@ class _HomePageState extends State<HomePage> {
     return Scaffold(
       appBar: AppBar(
         title: const Text('Movies'),
-        backgroundColor: Colors.black,
+        backgroundColor: Colors.transparent,
         centerTitle: true,
         elevation: 0,
         actions: [
@@ -50,7 +52,7 @@ class _HomePageState extends State<HomePage> {
             padding: const EdgeInsets.all(10.0),
             child: GestureDetector(
               onTap: () {
-                print("============onTab===========");
+                debugPrint("============onTab===========");
                 Navigator.push(
                   context,
                   MaterialPageRoute(
@@ -58,7 +60,7 @@ class _HomePageState extends State<HomePage> {
                   ),
                 );
               },
-              child: Icon(Icons.search),
+              child: const Icon(Icons.search),
             ),
           )
         ],
@@ -107,11 +109,11 @@ class _HomePageState extends State<HomePage> {
   _buildListView(List<Result> items) {
     return RefreshIndicator(
       onRefresh: () async {
-        print('============onRefreshed=============');
+        debugPrint('============onRefreshed=============');
         _moviesDb = getMovieAPI;
       },
       child: ListView.builder(
-        physics: BouncingScrollPhysics(),
+        physics: const BouncingScrollPhysics(),
         itemCount: items.length,
         itemBuilder: (context, index) {
           return _buildItem(items[index]);
@@ -165,7 +167,7 @@ class _HomePageState extends State<HomePage> {
                     Padding(
                       padding: const EdgeInsets.only(top: 10),
                       child: Text(
-                        '${item.title}',
+                        item.title,
                         style: const TextStyle(
                             fontSize: 16, fontWeight: FontWeight.bold),
                       ),
@@ -196,45 +198,43 @@ class _HomePageState extends State<HomePage> {
         Positioned(
           right: 12,
           top: 10,
-          child: Container(
-            child: PopupMenuButton(
-              child: const Icon(Icons.more_horiz),
-              itemBuilder: (context) {
-                return items_Option
-                    .map(
-                      (e) => PopupMenuItem<String>(
-                        value: e,
-                        child: Text(e),
-                      ),
-                    )
-                    .toList();
-              },
-              onSelected: (value) {
-                if (value == 'Preview') {
-                  print('=======Previewed========');
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                      builder: (_) => DetailPage(
-                        item: item,
-                      ),
+          child: PopupMenuButton(
+            child: const Icon(Icons.more_horiz),
+            itemBuilder: (context) {
+              return items_Option
+                  .map(
+                    (e) => PopupMenuItem<String>(
+                      value: e,
+                      child: Text(e),
                     ),
-                  );
-                }
-                if (value == 'Edit') {
-                  print('==========Edited=========');
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                      builder: (_) => const EditPage(),
+                  )
+                  .toList();
+            },
+            onSelected: (value) {
+              if (value == 'Preview') {
+                debugPrint('=======Previewed========');
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (_) => DetailPage(
+                      item: item,
                     ),
-                  );
-                }
-                if (value == 'Delete') {
-                  print('===========Deleted=========');
-                }
-              },
-            ),
+                  ),
+                );
+              }
+              if (value == 'Edit') {
+                debugPrint('==========Edited=========');
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (_) => const EditPage(),
+                  ),
+                );
+              }
+              if (value == 'Delete') {
+                debugPrint('===========Deleted=========');
+              }
+            },
           ),
         ),
       ],

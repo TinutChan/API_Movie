@@ -48,7 +48,8 @@ class _zohoSalesIQchatState extends State<zohoSalesIQchat> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: Colors.black,
+        backgroundColor: Colors.transparent,
+        elevation: 0,
       ),
       body: Center(
         child: Column(
