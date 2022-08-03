@@ -38,7 +38,7 @@ class _HomePageState extends State<HomePage> {
     return Scaffold(
       appBar: AppBar(
         title: const Text('Movies'),
-        backgroundColor: Colors.transparent,
+        backgroundColor: Colors.black.withOpacity(0.9),
         centerTitle: true,
         elevation: 0,
         actions: [
@@ -93,15 +93,8 @@ class _HomePageState extends State<HomePage> {
         },
       ),
       floatingActionButton: FloatingActionButton(
-        child: const Icon(Icons.message_sharp),
-        onPressed: () {
-          Navigator.push(
-            context,
-            MaterialPageRoute(
-              builder: (_) => zohoSalesIQchat(),
-            ),
-          );
-        },
+        child: zohoSalesIQchat(),
+        onPressed: () {},
       ),
     );
   }
